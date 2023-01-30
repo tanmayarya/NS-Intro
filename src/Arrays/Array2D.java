@@ -93,8 +93,8 @@ public class Array2D {
 //		System.out.println(Math.min((n*n) - count, count));
 		
 		
-		String s = "1 2 44 5 9 0 ";
-		String arr[] = s.split("44");
+		String s = "";
+		String arr[] = s.split(" ");
 		for(int i =0; i < arr.length; i++)
 			System.out.println(arr[i]);
 		
