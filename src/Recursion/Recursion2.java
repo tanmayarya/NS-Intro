@@ -2,6 +2,12 @@ package Recursion;
 
 public class Recursion2 {
 	
+	public static int multiply(int m, int n) {
+		if(n == 0) return 0;
+		int ans = multiply(m, n - 1);
+		return ans + m;
+	}
+	
 	
 	public static boolean isPalindrome(String str, int si, int ei) {
 		if(si >= ei) return true;
