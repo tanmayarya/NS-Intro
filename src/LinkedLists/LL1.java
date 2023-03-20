@@ -1,7 +1,7 @@
 package LinkedLists;
 
 class Node {
-    Node next;
+    Node next, prev;
     int val;
 
     Node(int val) {
@@ -28,40 +28,37 @@ public class LL1 {
 	*/
 	public static Node Merge (Node head1, Node head2){
 	    Node head = null, tail = null;
+	    
 	    while(head1 != null && head2 != null) {
-	        if(head1.val < head2.val) {
-	            if(head == null) {
-	                 head = new Node(head1.val);
-	                 tail = head;
-	            } else {
-	                tail.next = new Node(head1.val);
-	                tail = tail.next;
-	            }
-	            head1 = head1.next;
-	        } else {
-	                 if(head == null) {
-	                 head = new Node(head2.val);
-	                 tail = head;
-	            } else {
-	                tail.next = new Node(head2.val);
-	                tail = tail.next;
-	            }
-	            head2 = head2.next;
-	        }
+	    	Node node;
+	    	if(head1.val < head2.val) {
+	    		node = new Node(head1.val);
+	    		head1 = head1.next;
+	    	} else {
+	    		node = new Node(head2.val);
+	    		head2 = head2.next;
+	    	}
+	    	
+	    	if(head == null) { // no node in result LL
+	    		head = tail = node;
+	    	} else { // nodes are already present
+	    		tail.next = node;
+	    		tail = node;
+	    	}
 	    }
-
 	    while(head1 != null) {
-	        tail.next = new Node(head1.val);
-	                tail = tail.next;
-	        head1 = head1.next;
+	    	Node node = new Node(head1.val);
+    		head1 = head1.next;
+    		tail.next = node;
+    		tail = node;
 	    }
-
+	    
 	    while(head2 != null) {
-	        tail.next = new Node(head2.val);
-	                tail = tail.next;
-	        head2 = head2.next;
+	    	Node node = new Node(head2.val);
+    		head2 = head2.next;
+    		tail.next = node;
+    		tail = node;
 	    }
-
 	    return head;
 	}
 }
