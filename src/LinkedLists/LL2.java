@@ -2,6 +2,56 @@ package LinkedLists;
 
 public class LL2 {
 	
+	class Queue
+	{
+	 private Node front, rear; 
+	 private int currentSize;
+	 
+	class Node {
+	    Node next;
+	    int val;
+
+	    Node(int val) {
+	        this.val = val;
+	        next = null;
+	       
+	    }
+	}
+	    
+	 public Queue()
+	 {
+	 front = null;
+	 rear = null;
+	 currentSize = 0;
+	 }
+	 
+	 
+	 public void dequeue() {
+	    if(currentSize == 0) return;
+	    front = front.next;
+	    currentSize--;
+	 }
+	 public void enqueue(int data) {
+	     Node n = new Node(data);
+	 
+	    if(currentSize == 0) {
+	        front = rear = n;
+	    }
+	    else{
+	    rear.next = n;
+	    rear = n;
+	    }
+	    currentSize++;
+	 }
+	 public void displayfront() {
+	     if(currentSize == 0) {
+	         System.out.println(0);
+	         return;
+	     }
+	  System.out.println(front.val);   
+	 }
+	}
+	
 	public static Node deleteElement(Node head,int k) {
 		 // calculate size of LL
 		    int size = 0;
