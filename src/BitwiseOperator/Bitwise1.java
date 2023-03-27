@@ -11,6 +11,20 @@ public class Bitwise1 {
 		}
 		return ans;
 	}
+	
+	
+	public static long cyclicLeftShift(int n) {
+		long maxValue = n;
+		
+		for(int i = 1; i <= 32; i++) {
+			long currentIteration = (n << i) | (n >> (32 - i));
+			if(currentIteration > maxValue) {
+				maxValue = currentIteration;
+			}
+		}
+		
+		return maxValue;
+	}
 
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
