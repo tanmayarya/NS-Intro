@@ -97,7 +97,7 @@ public class Stack1 {
 		int area = 0;
 		
 		for(int i = 0; i < arr.length; i++) {
-			while(st.size() > 1 && arr[st.peek()] < arr[i]) {
+			while(st.size() > 1 && arr[st.peek()] > arr[i]) {
 				int height = arr[st.pop()];
 				int rightBoundry = i;
 				int leftBoundry = st.peek();
@@ -107,9 +107,15 @@ public class Stack1 {
 			st.push(i);
 		}
 		
+		while(st.size() > 1) {
+			int height = arr[st.pop()];
+			int rightBoundry = arr.length;
+			int leftBoundry = st.peek();
+			int currArea = (rightBoundry - leftBoundry - 1) * height;
+			if(currArea > area) area = currArea;
+		}
+		
 		return area;
-		
-		
 	}
 	
 	public static void main(String[] args) {
